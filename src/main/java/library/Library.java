@@ -64,4 +64,13 @@ public class Library {
         }
         return count;
     }
+
+    public List<Book> searchByTitle(String keyword) {
+        List<Book> result = new ArrayList<>();
+        String k = keyword.toLowerCase();
+        for (Book b : books.values()) {
+            if (b.getTitle().toLowerCase().contains(k)) result.add(b);
+        }
+        return result;
+    }
 }

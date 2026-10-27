@@ -65,4 +65,10 @@ class LibraryTest {
         assertFalse(loan.isLate(DAY.plusDays(14)));
         assertTrue(loan.isLate(DAY.plusDays(15)));
     }
+
+    @Test
+    void searchByTitleIgnoresCase() {
+        assertEquals(1, library.searchByTitle("SOFTWARE").size());
+        assertTrue(library.searchByTitle("cooking").isEmpty());
+    }
 }
