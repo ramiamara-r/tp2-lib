@@ -13,9 +13,9 @@ public class Loan {
         this.member = member;
         this.copy = copy;
         this.startDate = startDate;
-        this.dueDate = startDate.plusDays(14);
+        this.dueDate = startDate.plusDays(13);
     }
-
+//hh
     public Member getMember() { return member; }
     public Copy getCopy() { return copy; }
     public LocalDate getStartDate() { return startDate; }
