@@ -1,0 +1,33 @@
+@startuml
+title UC-05 Register a loan
+
+|Librarian|
+start
+:Identify the member\n(membership card);
+|System|
+:Check borrowing rights;
+if (rights OK?) then (yes)
+else (no)
+  :Refuse the loan,\ndisplay the reason (3a);
+  stop
+endif
+
+repeat
+  |Librarian|
+  :Scan the barcode of a copy;
+  |System|
+  if (copy reserved for\nanother member?) then (yes)
+    :Refuse this copy,\nkeep it aside (5a);
+  else (no)
+    :Register the loan,\ncompute the due date;
+  endif
+  |Librarian|
+repeat while (another copy?) is (yes)
+not (no)
+
+|System|
+:Display the summary of the loans;
+|Librarian|
+:Hand over the copies;
+stop
+@enduml

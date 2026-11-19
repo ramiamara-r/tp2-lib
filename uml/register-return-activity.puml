@@ -1,0 +1,24 @@
+@startuml
+title UC-07 Register a return
+
+|Librarian|
+start
+:Scan the barcode of the returned copy;
+|System|
+:Find the open loan and close it;
+if (returned late?) then (yes)
+  :Suspend the member\n(extension point: late return);
+else (no)
+endif
+if (copy reserved by\nanother member?) then (yes)
+  :Keep the copy aside;
+  |Mail server|
+  :Notify the member who reserved it;
+  |System|
+else (no)
+  :Make the copy available;
+endif
+|Librarian|
+:Take the copy back\n(shelf or reserved shelf);
+stop
+@enduml
