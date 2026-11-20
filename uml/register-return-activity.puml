@@ -4,8 +4,17 @@ title UC-07 Register a return
 |Librarian|
 start
 :Scan the barcode of the returned copy;
+if (barcode readable?) then (yes)
+else (no)
+  :Enter the inventory number (1a);
+endif
 |System|
-:Find the open loan and close it;
+if (copy on loan?) then (yes)
+else (no)
+  :Display an error message (2a);
+  stop
+endif
+:Close the loan,\nrecord the return date;
 if (returned late?) then (yes)
   :Suspend the member\n(extension point: late return);
 else (no)
@@ -18,7 +27,6 @@ if (copy reserved by\nanother member?) then (yes)
 else (no)
   :Make the copy available;
 endif
-|Librarian|
-:Take the copy back\n(shelf or reserved shelf);
+:Print the receipt;
 stop
 @enduml

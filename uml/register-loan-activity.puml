@@ -16,18 +16,15 @@ repeat
   |Librarian|
   :Scan the barcode of a copy;
   |System|
-  if (copy reserved for\nanother member?) then (yes)
-    :Refuse this copy,\nkeep it aside (5a);
-  else (no)
+  if (copy available and\nnot reserved for another member?) then (yes)
     :Register the loan,\ncompute the due date;
+  else (no)
+    :Refuse this copy,\ndisplay the reason (5a);
   endif
   |Librarian|
-repeat while (another copy?) is (yes)
-not (no)
+repeat while (another copy?) is (yes) not (no)
 
 |System|
-:Display the summary of the loans;
-|Librarian|
-:Hand over the copies;
+:Print the receipt;
 stop
 @enduml
